@@ -15,9 +15,13 @@
     <script>
       window.$docsify = { 
         homepage:'README.md',
-        themeColor: '#143657',
+        themeColor: '#d61a6b',
+        plugins: [
+          MermaidPlugin.create(), // 启用 Mermaid 插件
+        ],
       };
     </script>
     <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
+    <script src="//cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.js"></script>
   </body>
 </html>
