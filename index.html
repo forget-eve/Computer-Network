@@ -25,11 +25,12 @@
               if(code.match(/^sequenceDiagram/) || code.match(/^graph/) || code.match(/^gantt/)){
               // 生成一个 mermaid 图表的容器
                 html = '<div class="mermaid">' + code + '</div>';
+              }else {
+                // 如果不是 mermaid 代码，则正常渲染
+                var hl = Prism.highlight(code, Prism.languages[lang] || Prism.languages.markup)
+                html = '<pre v-pre data-lang="' + lang + '"><code class="lang-' + lang + '">' + hl + '</code></pre>';
               }
-              // 源码自带的 Prism 高亮插件
-              var hl = Prism.highlight(code, Prism.languages[lang] || Prism.languages.markup)
-              // 将图表的容器添加到代码之前
-              return html + '<pre v-pre data-lang="' + lang + '"><code class="lang-' + lang + '">' + hl + '</code></pre>'
+              return html;
             }
           }
         },
