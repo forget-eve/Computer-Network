@@ -8,7 +8,8 @@
       rel="stylesheet"
       href="//cdn.jsdelivr.net/npm/docsify@4/themes/dark.css"
     />
-     <title>计算机网络</title>
+    <link rel="stylesheet" href="//unpkg.com/mermaid/dist/mermaid.min.css" />
+    <title>计算机网络</title>
   </head>
   <body>
     <div id="app"></div>
@@ -16,12 +17,36 @@
       window.$docsify = { 
         homepage:'README.md',
         themeColor: '#d61a3f',
+        markdown: {
+          renderer: {
+            code: function(code, lang) {
+              var html = '';// 搜索 mermaid 代码
+              if(code.match(/^sequenceDiagram/) || code.match(/^graph/) || code.match(/^gantt/)){
+              // 生成一个 mermaid 图表的容器
+                html = '<div class="mermaid">' + code + '</div>';
+              }
+              // 源码自带的 Prism 高亮插件
+              var hl = Prism.highlight(code, Prism.languages[lang] || Prism.languages.markup)
+              // 将图表的容器添加到代码之前
+              return html + '<pre v-pre data-lang="' + lang + '"><code class="lang-' + lang + '">' + hl + '</code></pre>'
+              }
+          }
+        };
         plugins: [
-          MermaidPlugin.create(), // 启用 Mermaid 插件
-        ],
+          function (hook, vm) {
+            hook.ready(function () {
+            // 类似 jQuery.ready 初始化 mermaid, 禁用自动渲染
+              mermaid.initialize({ startOnLoad: false });
+            });
+            hook.doneEach(function () {
+            // 每个页面渲染完成后手动渲染 mermaid 图表
+            mermaid.init(undefined, '.mermaid');
+            });
+          }
+        ];
       };
     </script>
     <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
-    <script src="//cdn.jsdelivr.net/npm/mermaid@10.4.0"></script>
+    <script type="text/javascript" src="//unpkg.com/mermaid/dist/mermaid.min.js"></script>
   </body>
 </html>
