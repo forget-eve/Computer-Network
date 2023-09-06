@@ -29,9 +29,9 @@
               var hl = Prism.highlight(code, Prism.languages[lang] || Prism.languages.markup)
               // 将图表的容器添加到代码之前
               return html + '<pre v-pre data-lang="' + lang + '"><code class="lang-' + lang + '">' + hl + '</code></pre>'
-              }
+            }
           }
-        };
+        },
         plugins: [
           function (hook, vm) {
             hook.ready(function () {
@@ -43,7 +43,7 @@
             mermaid.init(undefined, '.mermaid');
             });
           }
-        ];
+        ]
       };
     </script>
     <script src="//cdn.jsdelivr.net/npm/docsify@4"></script>
