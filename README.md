@@ -490,7 +490,7 @@ P --> S((智能用户终端))
 - [x] 网络容量(速率)度量时
 	> $1kbps=10^3bps,1Mbps=10^3kbps,1Gbps=10^3Mbps, 1Tbps=10^3Gbps$
 - [x] 数据量（存储容量）度量时
-	> $1kB=2^{10}B, 1MB=2^{10}KB, 1GB=2^{10}M, 1TB=2^{10G}$
+	> $1kB=2^{10}B, 1MB=2^{10}KB, 1GB=2^{10}M, 1TB=2^{10}G$
 
 ### 速率和带宽
 - [x] 速率即数据率(data rate)或比特率(bit rate)是计算机网络中最重要的一个性能指标。速率的单位是 bps(b/s)、kbps(kb/s)、Mbps(Mb/s)、Gbps(Gb/s)等
